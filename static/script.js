@@ -1,3 +1,4 @@
+// Function to clear modal
 function clearModal(){
     $('#jokeTitle').show();
     $('#errorTitle').hide();
@@ -5,6 +6,7 @@ function clearModal(){
     $('#errorText').text("");
 }
 
+// Function to show errors
 function showError($text){
     $('#jokeModal').modal('show');
     $('#jokeTitle').hide();
@@ -12,6 +14,7 @@ function showError($text){
     $('#errorText').text($text);
 }
 
+// Function to show jokes
 function showJoke($text){
     $('#jokeModal').modal('show');
     $('#jokeTitle').show();
@@ -19,12 +22,16 @@ function showJoke($text){
     $('#jokeText').text($text);
 }
 
+//Starting Point
 $(document).ready(function (){
+    // Clearing modal initially
     clearModal();
 
+    // Clicking submit button
     $('#submitBtn').click(function(e){
         e.preventDefault();
         clearModal();
+        // Sending request to get jokes
         $.ajax({
             url: "/get_joke",
             method: "POST",
