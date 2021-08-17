@@ -1,22 +1,22 @@
 function clearModal(){
     $('#jokeTitle').show();
     $('#errorTitle').hide();
-    $('#jokeText').val("");
-    $('#errorText').val("");
+    $('#jokeText').text("");
+    $('#errorText').text("");
 }
 
 function showError($text){
     $('#jokeModal').modal('show');
     $('#jokeTitle').hide();
     $('#errorTitle').show();
-    $('#errorText').val($text);
+    $('#errorText').text($text);
 }
 
 function showJoke($text){
     $('#jokeModal').modal('show');
     $('#jokeTitle').show();
     $('#errorTitle').hide();
-    $('#jokeText').val($text);
+    $('#jokeText').text($text);
 }
 
 $(document).ready(function (){
