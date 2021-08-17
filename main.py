@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import pyjokes
+from pyjokes.pyjokes import LanguageNotFoundError, CategoryNotFoundError
 import json
 
 # Global Variables
@@ -21,11 +22,21 @@ def home():
 def get_joke():
     if request.method == "POST":
         try:
-            lang_form__ = request.form["langSelect"]
-            cat_form__ = request.form["catSelect"]
-            joke__ = pyjokes.get_joke(language=lang__[lang_form__],
-                                      category=cat__[cat_form__])
+            try:
+                lang_form__ = lang__[request.form["langSelect"]]
+            except KeyError:
+                return jsonify(error="Language is incorrect")
+            try:
+                cat_form__ = cat__[request.form["catSelect"]]
+            except KeyError:
+                return jsonify(error="Category is incorrect")
+            joke__ = pyjokes.get_joke(language=lang_form__,
+                                      category=cat_form__)
             return jsonify(joke=str(joke__), error=None)
+        except LanguageNotFoundError:
+            return jsonify(error="Language not found.")
+        except CategoryNotFoundError:
+            return jsonify(error="Category not found.")
         except Exception as e:
             return jsonify(error=str(e))
 
