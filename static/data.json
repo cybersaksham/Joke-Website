@@ -1,0 +1,16 @@
+{
+  "languages": {
+    "English": "en",
+    "German": "de",
+    "Spanish": "es",
+    "Galician": "gl",
+    "Basque": "eu",
+    "Italian": "it"
+  },
+  "categories": {
+    "Geeky Jokes": "neutral",
+    "Chris Norris Jokes": "chuck",
+    "Tongue Twister": "twister",
+    "All": "all"
+  }
+}
